@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = "postgres://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT";
-
+var host = process.env.OPENSHIFT_POSTGRESQL_DB_HOST;
+var port = process.env.OPENSHIFT_POSTGRESQL_DB_PORT;
+var connectionString = "pg://adminunl69sf:am7dXX6vY_jy@" + host + ":" + port + "/leaderboard";
 /* GET home page. */
 router.get('/scores', function(req, res) {
   var results = [];

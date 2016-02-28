@@ -1,5 +1,6 @@
 var pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/leaderboard';
+var connectionString = "postgres://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT";
+// var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/leaderboard';
 
 var client = new pg.Client(connectionString);
 client.connect();

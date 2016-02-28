@@ -5,7 +5,7 @@ var host = process.env.OPENSHIFT_POSTGRESQL_DB_HOST;
 var port = process.env.OPENSHIFT_POSTGRESQL_DB_PORT;
 var connectionString = "pg://adminunl69sf:am7dXX6vY_jy@" + host + ":" + port + "/leaderboard";
 /* GET home page. */
-router.get('api/scores', function(req, res) {
+router.get('/api/scores', function(req, res) {
   var results = [];
 
   pg.connect(connectionString, function(err, client, done) {

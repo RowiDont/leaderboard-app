@@ -40,11 +40,14 @@ router.post('/api/scores', function(req, res) {
       return res.status(500).json({ success: false, data: err });
     }
 
-    client.query("INSERT INTO scores(name, score) values($1, $2)", [data.name, data.score]);
+    var query = client.query("INSERT INTO scores(name, score) values($1, $2)", [data.name, data.score]);
 
 
-    done();
-    res.send('score added');
+    query.on('end', function() {
+      done();
+      res.send('score added');
+    });
+
   });
 });
 

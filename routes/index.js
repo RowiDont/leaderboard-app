@@ -32,7 +32,7 @@ router.get('/api/scores', function(req, res) {
 
 router.post('/api/scores', function(req, res) {
   var results = [];
-  console.log(JSON.stringify(req.body));
+  // console.log(JSON.stringify(req.body));
   var data = { name: req.body.name, score: req.body.score };
 
   pg.connect(connectionString, function(err, client, done) {

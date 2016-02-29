@@ -16,7 +16,7 @@ router.get('/api/scores', function(req, res) {
       return res.status(500).json({ success: false, data: err });
     }
 
-    var query = client.query("SELECT * FROM scores ORDER BY score DESC LIMIT 10");
+    var query = client.query("SELECT * FROM scores WHERE name IS NOT NULL ORDER BY score DESC LIMIT 10");
 
     query.on('row', function(row) {
       results.push(row);

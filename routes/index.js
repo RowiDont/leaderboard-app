@@ -16,7 +16,7 @@ router.get('/api/scores', function(req, res) {
       return res.status(500).json({ success: false, data: err });
     }
 
-    var query = client.query("SELECT * FROM scores ORDER BY score DESC");
+    var query = client.query("SELECT * FROM scores ORDER BY score DESC LIMIT 10");
 
     query.on('row', function(row) {
       results.push(row);
@@ -32,7 +32,7 @@ router.get('/api/scores', function(req, res) {
 
 router.post('/api/scores', function(req, res) {
   var results = [];
-
+  console.log(JSON.stringify(req.body));
   var data = { name: req.body.name, score: req.body.score };
 
   pg.connect(connectionString, function(err, client, done) {
